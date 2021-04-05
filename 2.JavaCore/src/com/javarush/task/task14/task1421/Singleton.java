@@ -7,5 +7,10 @@ public class Singleton {
     }
 
     private Singleton() {
+        System.out.println("создался синглтон");
+    }
+
+    static {
+        System.out.println("статический блок");
     }
 }

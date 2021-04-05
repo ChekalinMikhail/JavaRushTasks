@@ -7,6 +7,7 @@ package com.javarush.task.task15.task1528;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(new Hryvnia().getAmount());
+        System.out.println(String.valueOf(new Hryvnia().getAmount()));
     }
 
     public static abstract class Money {

@@ -25,10 +25,10 @@ public class Solution {
 
         if (n == 0) return "1";
 
-        BigDecimal fact = new BigDecimal(1);
+        BigInteger fact = BigInteger.valueOf(1);
 
         for (int i = 1; i <= n; i++) {
-            fact = fact.multiply(new BigDecimal(i));
+            fact = fact.multiply(BigInteger.valueOf(i));
         }
         return fact.toString();
     }

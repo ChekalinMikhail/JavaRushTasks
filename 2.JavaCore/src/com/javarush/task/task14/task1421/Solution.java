@@ -6,6 +6,10 @@ Singleton
 
 public class Solution {
     public static void main(String[] args) {
+        System.out.println("запустился main");
         System.out.println(Singleton.getInstance());
+        System.out.println(Singleton.class.getClassLoader());
+
     }
+
 }
