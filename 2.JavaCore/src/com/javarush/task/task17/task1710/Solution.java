@@ -1,6 +1,5 @@
 package com.javarush.task.task17.task1710;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
