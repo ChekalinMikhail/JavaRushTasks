@@ -1,30 +1,41 @@
 package com.javarush.task.task05.task0531;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /* 
 Совершенствуем функциональность
 */
 
 public class Solution {
+    public static void readAndPrintLine() throws IOException {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(isr);
+
+        while (true) {
+            String line = reader.readLine();
+            if (line == null) break;
+            System.out.println(line);
+        }
+        reader.close();
+        isr.close();
+    }
 
     public static void main(String[] args) throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int a = Integer.parseInt(reader.readLine());
-        int b = Integer.parseInt(reader.readLine());
-        int c = Integer.parseInt(reader.readLine());
-        int d = Integer.parseInt(reader.readLine());
-        int i = Integer.parseInt(reader.readLine());
+        //кладем данные в строку
+        StringBuilder sb = new StringBuilder();
+        sb.append("Lena").append('\n');
+        sb.append("Olya").append('\n');
+        sb.append("Anya").append('\n');
+        String data = sb.toString();
 
-        int minimum = min(a, b, c, d, i);
+        //Оборачиваем строку в класс ByteArrayInputStream
+        InputStream is = new ByteArrayInputStream(data.getBytes());
 
-        System.out.println("Minimum = " + minimum);
-    }
+        //подменяем in
+        System.setIn(is);
 
-
-    public static int min(int a, int b, int c, int d, int i) {
-
-        return Math.min(a, Math.min(b, Math.min(c, Math.min(d, i))));
+        //вызываем обычный метод, который не подозревает о наших манипуляциях
+        readAndPrintLine();
     }
 }
+

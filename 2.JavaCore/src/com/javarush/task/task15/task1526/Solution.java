@@ -10,7 +10,7 @@ public class Solution {
         new B(6);
     }
 
-    public static class A {
+    static class A {
         private int f1 = 7;
 
         public A(int f1) {
@@ -23,7 +23,7 @@ public class Solution {
         }
     }
 
-    public static class B extends A {
+    static class B extends A {
         protected int f1 = 3;
 
         public B(int f1) {
