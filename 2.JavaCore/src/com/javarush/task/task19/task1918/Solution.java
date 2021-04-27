@@ -15,11 +15,9 @@ import java.util.regex.Pattern;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        String tag = args[0];
         //String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();
         String fileName = "C:\\Users\\Acer\\Desktop\\STONKS.txt";
         String readLine;
-        int internalTagsCount;
         String line = "";
         try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
             while ((readLine = fileReader.readLine()) != null) {
@@ -28,15 +26,22 @@ public class Solution {
         }
         System.out.println(line);
 
-        List<String> start = new ArrayList<>();
+        List<Integer> start = new ArrayList<>();
         List<Integer> end = new ArrayList<>();
 
         Pattern pattern = Pattern.compile("<span");
         Matcher matcher = pattern.matcher(line);
         while (matcher.find()) {
-            start.add(line.substring(matcher.start(), matcher.end()));
+            start.add(matcher.start());
         }
         start.forEach(System.out::println);
+
+        Pattern pattern1 = Pattern.compile("/span>");
+        Matcher matcher1 = pattern1.matcher(line);
+        while (matcher1.find()) {
+            end.add(matcher1.end());
+        }
+        end.forEach(System.out::println);
     }
 }
 //C:\Users\Acer\Desktop\STONKS.txt
