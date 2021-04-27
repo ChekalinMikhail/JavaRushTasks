@@ -1,7 +1,0 @@
-String32
-String34
-String44
-String35
-String37
-String45
-String38
