@@ -15,33 +15,48 @@ import java.util.regex.Pattern;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        //String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        String fileName = "C:\\Users\\Acer\\Desktop\\STONKS.txt";
+        String fileName;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = reader.readLine();
+        }
+        //String fileName = "C:\\Users\\Acer\\Desktop\\STONKS.txt";
         String readLine;
-        String line = "";
+        String readFileContent = "";
         try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
             while ((readLine = fileReader.readLine()) != null) {
-                line = line + readLine;
+                readFileContent = readFileContent + readLine;
             }
         }
-        System.out.println(line);
+        String fileContent = readFileContent;
 
-        List<Integer> start = new ArrayList<>();
-        List<Integer> end = new ArrayList<>();
+        String openTag = "<" + args[0];
+        String closingTag = "</" + args[0];
+        int tagLength = args[0].length();
+        int startTagIndex = 0;
+        int endTagIndex = 0;
 
-        Pattern pattern = Pattern.compile("<span");
-        Matcher matcher = pattern.matcher(line);
-        while (matcher.find()) {
-            start.add(matcher.start());
+        ArrayList<String> tags = new ArrayList<>();
+
+        while ((startTagIndex != -1) && (startTagIndex < fileContent.length())) {
+            startTagIndex = fileContent.indexOf(openTag, startTagIndex);
+            endTagIndex = fileContent.indexOf(closingTag, startTagIndex + tagLength);
+
+            int indexInTag = startTagIndex + tagLength;
+            if (endTagIndex != -1) {
+                while (fileContent.substring(indexInTag, endTagIndex).contains(openTag)) {
+                    indexInTag = endTagIndex + tagLength;
+                    endTagIndex = fileContent.indexOf(closingTag, indexInTag);
+                }
+            }
+            if (startTagIndex != -1 && endTagIndex != -1) {
+                tags.add(fileContent.substring(startTagIndex, endTagIndex + tagLength + 3));
+                startTagIndex += tagLength;
+            }
         }
-        start.forEach(System.out::println);
 
-        Pattern pattern1 = Pattern.compile("/span>");
-        Matcher matcher1 = pattern1.matcher(line);
-        while (matcher1.find()) {
-            end.add(matcher1.end());
+        for (String tag : tags) {
+            System.out.println(tag);
         }
-        end.forEach(System.out::println);
     }
 }
 //C:\Users\Acer\Desktop\STONKS.txt

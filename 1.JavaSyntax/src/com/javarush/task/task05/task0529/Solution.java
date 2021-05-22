@@ -9,21 +9,10 @@ import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        int sum = 0;
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        while (true)
-        {
-            String s = buffer.readLine();
-            if (s.equals("сумма")) {
-                break;}
-            else {
-                int number = Integer.parseInt(s);
-                sum += number;
-            }
-        }
-
-        System.out.println(sum);
-
-        //напишите тут ваш код
+        long number = 3;
+        number *= number;
+        System.out.println(number);
+        number *= number;
+        System.out.println(number);
     }
 }

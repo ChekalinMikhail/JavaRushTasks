@@ -9,9 +9,18 @@ import java.util.Date;
 
 public class Solution {
     public static void main(String[] args) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
-        Date date = new Date();
-        System.out.println(sdf.format(date));
-        //напишите тут ваш код
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
+//        Date date = new Date();
+//        System.out.println(sdf.format(date));
+        Integer x = Integer.MAX_VALUE;
+        System.out.println(x);
+        System.out.println(Integer.toBinaryString(x));
+        Long y = Long.MAX_VALUE;
+        System.out.println(y);
+        System.out.println(Long.toBinaryString(y));
+        System.out.println(y >> 32);
+        System.out.println(Long.toBinaryString(y >> 32));
+//        System.out.println(Integer.toBinaryString(x << 3));
+//        System.out.println(Integer.toBinaryString(x >>> 3));
     }
 }
